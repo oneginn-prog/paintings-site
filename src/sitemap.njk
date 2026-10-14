@@ -1,0 +1,17 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for item in collections.all %}
+{%- if item.data.lang and item.url and not item.url.startsWith("/404") %}
+  {%- set other = item.url | otherLang(item.data.lang) %}
+  <url>
+    <loc>{{ site.url }}{{ item.url }}</loc>
+    <xhtml:link rel="alternate" hreflang="{{ item.data.lang }}" href="{{ site.url }}{{ item.url }}"/>
+    <xhtml:link rel="alternate" hreflang="{{ 'en' if item.data.lang == 'ru' else 'ru' }}" href="{{ site.url }}{{ other }}"/>
+  </url>
+{%- endif %}
+{%- endfor %}
+</urlset>

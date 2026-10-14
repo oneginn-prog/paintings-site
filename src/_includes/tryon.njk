@@ -1,0 +1,79 @@
+{#- Окно «Примерить на свою стену». Всё считается в браузере, фото никуда не уходит. -#}
+<dialog class="tryon" aria-labelledby="tryon-title"
+  data-items="{{ tryonItems | json }}"
+  data-gap="{{ item.gap or 0 }}"
+  data-title="{{ item.title[lang] }}"
+  data-slug="{{ item.slug }}"
+  data-message="{{ message }}">
+  <div class="tryon__head">
+    <h2 class="tryon__title" id="tryon-title">{{ t.tryon.title }} · <em>{{ item.title[lang] }}</em></h2>
+    <button class="tryon__close" type="button" data-close aria-label="{{ t.work.close }}">×</button>
+  </div>
+
+  <div class="tryon__body">
+    <div class="tryon__stage" hidden>
+      <canvas class="tryon__canvas"></canvas>
+    </div>
+
+    <div class="tryon__panel">
+      <div class="tryon__step" data-step="upload">
+        <p>{{ t.tryon.step1 }}</p>
+        <label class="btn tryon__upload">
+          {{ t.tryon.upload }}
+          <input type="file" accept="image/*" hidden>
+        </label>
+      </div>
+
+      <div class="tryon__step" data-step="calibrate" hidden>
+        <p>{{ t.tryon.step2 }}</p>
+        <p class="tryon__hint">{{ t.tryon.hint }}</p>
+        <label class="field">
+          <span>{{ t.tryon.widthLabel }}</span>
+          <input type="number" inputmode="decimal" min="10" max="2000" step="1" placeholder="200" data-width>
+        </label>
+        <div class="tryon__row">
+          <button class="btn" type="button" data-apply disabled>{{ t.tryon.apply }}</button>
+          <button class="btn btn--ghost" type="button" data-skip>{{ t.tryon.skip }}</button>
+        </div>
+      </div>
+
+      <div class="tryon__step" data-step="place" hidden>
+        <p>{{ t.tryon.step3 }}</p>
+        <p class="tryon__hint" data-scale-note data-approx="{{ t.tryon.noCalibration }}" data-real="{{ t.tryon.calibrated }}"></p>
+        <div class="tryon__controls">
+          <div class="field">
+            <span>{{ t.tryon.light }}</span>
+            <div class="seg" role="radiogroup" aria-label="{{ t.tryon.light }}">
+              <button type="button" role="radio" aria-checked="true" data-light="left">{{ t.tryon.lightLeft }}</button>
+              <button type="button" role="radio" aria-checked="false" data-light="right">{{ t.tryon.lightRight }}</button>
+            </div>
+          </div>
+          <label class="field">
+            <span>{{ t.tryon.softness }}</span>
+            <input type="range" min="0" max="100" value="55" data-softness>
+          </label>
+          <label class="field">
+            <span>{{ t.tryon.scale }}</span>
+            <input type="range" min="20" max="300" value="100" data-scale>
+          </label>
+          {%- if isDiptych %}
+          <label class="field">
+            <span>{{ t.tryon.gap }}</span>
+            <input type="range" min="0" max="40" value="{{ item.gap }}" data-gap>
+          </label>
+          {%- endif %}
+        </div>
+        <div class="tryon__row">
+          <button class="btn" type="button" data-save>{{ t.tryon.save }}</button>
+          <a class="btn btn--ghost" href="{{ site.telegram }}" target="_blank" rel="noopener" data-copy="{{ message }}">{{ t.tryon.write }}</a>
+        </div>
+        <div class="tryon__row tryon__row--small">
+          <button class="link" type="button" data-recalibrate>{{ t.tryon.redo }}</button>
+          <label class="link">{{ t.tryon.newPhoto }}<input type="file" accept="image/*" hidden></label>
+        </div>
+      </div>
+
+      <p class="tryon__privacy">{{ t.tryon.privacy }}</p>
+    </div>
+  </div>
+</dialog>

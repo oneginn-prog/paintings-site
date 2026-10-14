@@ -1,0 +1,18 @@
+{
+  "name": "paintings-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Онлайн-галерея картин Вадима Гусева",
+  "type": "module",
+  "scripts": {
+    "images": "node scripts/build-images.mjs",
+    "build": "node scripts/build-images.mjs && eleventy",
+    "start": "node scripts/build-images.mjs && eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.2",
+    "@fontsource/cormorant-garamond": "5.2.6",
+    "@fontsource/manrope": "5.2.6",
+    "sharp": "0.34.3"
+  }
+}

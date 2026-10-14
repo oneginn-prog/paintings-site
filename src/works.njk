@@ -1,0 +1,129 @@
+---
+layout: base.njk
+pagination:
+  data: pages
+  size: 1
+  alias: p
+permalink: "{{ i18n[p.lang].prefix }}/works/{{ p.slug }}/"
+bodyClass: page-work
+tryon: true
+eleventyComputed:
+  lang: "{{ p.lang }}"
+  pageTitle: "{{ p.item.title[p.lang] }} — {{ i18n[p.lang].name }}"
+  pageDescription: "{% if p.type == 'work' %}{{ '«' if p.lang == 'ru' else '“' }}{{ p.item.title[p.lang] }}{{ '»' if p.lang == 'ru' else '”' }}: {{ p.item.technique[p.lang] | lower }}, {{ p.item.size[p.lang] }}, {{ p.item.year }}. {% else %}{{ p.item.title[p.lang] }}. {% endif %}{{ i18n[p.lang].work.unique }}. {{ p.item.price | price }}"
+  ogImage: "{% if p.type == 'work' %}{{ images.works[p.slug].og }}{% else %}{{ images.diptychs[p.slug].og }}{% endif %}"
+---
+{%- set t = i18n[lang] -%}
+{%- set item = p.item -%}
+{%- set isDiptych = p.type == "diptych" -%}
+{%- set qo = "«" if lang == "ru" else "“" -%}{%- set qc = "»" if lang == "ru" else "”" -%}
+{%- if isDiptych -%}
+  {%- set parts = [catalog.works | bySlug(item.parts[0]), catalog.works | bySlug(item.parts[1])] -%}
+  {%- set first = parts[0] -%}
+  {%- set interiors = images.diptychs[item.slug].interiors -%}
+  {%- set details = images.works[parts[0].slug].details.concat(images.works[parts[1].slug].details) -%}
+  {%- set message = t.work.messageTemplateDiptych | fill({ title: item.title[lang] }) -%}
+  {%- set subject = t.work.emailSubjectDiptych | fill({ title: item.title[lang] }) -%}
+  {%- set exclude = item.parts -%}
+{%- else -%}
+  {%- set parts = [item] -%}
+  {%- set first = item -%}
+  {%- set interiors = images.works[item.slug].interiors -%}
+  {%- set details = images.works[item.slug].details -%}
+  {%- set message = t.work.messageTemplate | fill({ title: item.title[lang] }) -%}
+  {%- set subject = t.work.emailSubject | fill({ title: item.title[lang] }) -%}
+  {%- set exclude = [item.slug] -%}
+  {%- if item.diptych %}{% set diptych = catalog.diptychs | bySlug(item.diptych) %}{% endif -%}
+{%- endif -%}
+{%- set tryonItems = [] -%}
+{%- for w in parts -%}
+  {%- set tryonItems = (tryonItems.push({ src: images.works[w.slug].main | mid | withBase, w: w.width, h: w.height, depth: w.depth }), tryonItems) -%}
+{%- endfor -%}
+
+<article class="work">
+  <div class="work__visual{% if isDiptych %} work__visual--pair{% endif %}">
+    {%- for w in parts %}
+    {%- set img = images.works[w.slug].main %}
+    <a class="work__mat" href="{{ img | full }}" data-lightbox="main" aria-label="{{ t.work.zoom }}: {{ w.title[lang] }}">
+      {% picture img, t.work.paintingAlt | fill({ title: w.title[lang], technique: w.technique[lang] | lower }), "(min-width: 960px) 50vw, 92vw" if not isDiptych else "(min-width: 960px) 25vw, 44vw", { eager: true, cls: "work__img" } %}
+    </a>
+    {%- endfor %}
+  </div>
+
+  <div class="work__info">
+    <p class="work__status"><span class="dot" aria-hidden="true"></span>{{ t.work.available }}</p>
+    <h1 class="work__title">{{ item.title[lang] }}</h1>
+    <dl class="work__specs">
+      <div><dt>{{ t.work.technique }}</dt><dd>{{ first.technique[lang] }}</dd></div>
+      <div><dt>{{ t.work.size }}</dt><dd>
+        {%- if isDiptych %}{% for w in parts %}{{ w.title[lang] }} — {{ w.size[lang] }}{% if not loop.last %}<br>{% endif %}{% endfor %}{% else %}{{ item.size[lang] }}{% endif -%}
+      </dd></div>
+      <div><dt>{{ t.work.year }}</dt><dd>{{ first.year }}</dd></div>
+      <div><dt>{{ t.work.price }}</dt><dd class="work__price">{{ item.price | price }}{% if isDiptych %} <span class="muted">{{ t.series.forPair }}</span>{% endif %}</dd></div>
+    </dl>
+    <ul class="work__notes">
+      {%- if first.framed %}<li>{{ t.work.framed }}</li>{% endif %}
+      <li>{{ t.work.signed }}</li>
+      {%- if diptych %}
+      <li><a class="link link--accent" href="{{ t.prefix }}/works/{{ diptych.slug }}/">{{ t.work.inDiptych }} {{ qo }}{{ diptych.short[lang] }}{{ qc }}</a> — {{ t.work.pairPrice }} {{ diptych.price | price }}</li>
+      {%- endif %}
+      {%- if isDiptych %}
+      <li>{{ t.series.separately | fill({ price: first.price | price }) | capitalize }}:
+        {% for w in parts %}<a class="link link--accent" href="{{ t.prefix }}/works/{{ w.slug }}/">{{ qo }}{{ w.title[lang] }}{{ qc }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</li>
+      {%- endif %}
+    </ul>
+
+    <div class="work__actions">
+      <a class="btn" href="{{ site.telegram }}" target="_blank" rel="noopener" data-copy="{{ message }}">{{ t.work.telegram }}</a>
+      <a class="btn btn--ghost" href="mailto:{{ site.email }}?subject={{ subject | urlencode }}">{{ t.work.email }}</a>
+    </div>
+    <button class="btn btn--line" type="button" data-tryon>{{ t.work.tryOn }}</button>
+  </div>
+</article>
+
+{%- if details.length %}
+<section class="section section--tight">
+  <h2 class="section__label">{{ t.work.details }}</h2>
+  <ul class="details">
+    {%- for d in details %}
+    <li>
+      <a class="details__item" href="{{ d | full }}" data-lightbox="details">
+        {% picture d, item.title[lang] + ": " + t.work.detailKinds[d.kind], "(min-width: 900px) 200px, 40vw" %}
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+<section class="section section--tight">
+  <h2 class="section__label">{{ t.work.interiorsCaptionDiptych if isDiptych else t.work.interiorsCaption }}</h2>
+  <div class="carousel" data-carousel>
+    <ul class="carousel__track">
+      {%- for im in interiors %}
+      <li class="carousel__slide">
+        <a href="{{ im | full }}" data-lightbox="interiors">
+          {% picture im, item.title[lang] + " — " + t.work.interiorAlt + " " + loop.index, "(min-width: 900px) 30vw, 80vw" %}
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- if interiors.length > 1 %}
+    <div class="carousel__nav">
+      <button class="carousel__btn" type="button" data-dir="-1" aria-label="{{ t.work.prev }}">←</button>
+      <button class="carousel__btn" type="button" data-dir="1" aria-label="{{ t.work.next }}">→</button>
+    </div>
+    {%- endif %}
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section__title section__title--small">{{ t.work.more }}</h2>
+  <ul class="grid grid--four">
+    {%- for w in catalog.works | moreWorks(exclude, 4) %}
+    {% include "card.njk" %}
+    {%- endfor %}
+  </ul>
+</section>
+
+{% include "tryon.njk" %}

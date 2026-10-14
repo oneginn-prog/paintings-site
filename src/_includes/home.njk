@@ -1,0 +1,82 @@
+{%- set t = i18n[lang] -%}
+<section class="hero" aria-label="{{ t.name }}">
+  <img class="hero__backdrop" src="{{ images.hero.src }}-800.webp" alt="" aria-hidden="true" fetchpriority="low">
+  {% picture images.hero, t.hero.alt, "(min-width: 960px) 62vw, 100vw", { eager: true, pictureClass: "hero__photo", cls: "hero__img" } %}
+  <div class="hero__panel">
+    <h1 class="hero__title">{{ t.hero.titleHtml | safe }}</h1>
+    <div class="hero__text">
+      {%- for p in t.hero.paragraphs %}
+      <p>{{ p }}</p>
+      {%- endfor %}
+    </div>
+    <a class="btn" href="#faq-how-to-buy" data-open-faq>{{ t.hero.button }}</a>
+  </div>
+</section>
+
+<section class="benefits">
+  <ul class="benefits__list">
+    {%- for b in t.benefits %}
+    <li class="benefit">
+      <span class="benefit__num">0{{ loop.index }}</span>
+      <h2 class="benefit__title">{{ b.title }}</h2>
+      <p class="benefit__text">{{ b.text }}</p>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="section" id="works">
+  <h2 class="section__title">{{ t.works.titleHtml | safe }}</h2>
+  <ul class="grid">
+    {%- for w in catalog.works %}
+    {% include "card.njk" %}
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="section section--series" id="series">
+  <h2 class="section__title">{{ t.series.titleHtml | safe }}</h2>
+  <p class="section__subtitle">{{ t.series.subtitle }}</p>
+  <ul class="series">
+    {%- for d in catalog.diptychs %}
+    {%- set a = catalog.works | bySlug(d.parts[0]) -%}
+    <li class="series__item">
+      <a class="series__link" href="{{ t.prefix }}/works/{{ d.slug }}/">
+        <div class="series__img">
+          {% picture images.diptychs[d.slug].interiors[0], d.title[lang] + " — " + t.work.interiorAlt + " 1", "(min-width: 900px) 44vw, 92vw" %}
+        </div>
+        <h3 class="series__title">{{ d.title[lang] }}</h3>
+        <p class="series__price">{{ d.price | price }} {{ t.series.forPair }} <span>({{ t.series.separately | fill({ price: a.price | price }) }})</span></p>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="portrait">
+  <figure class="portrait__figure">
+    {% picture images.portrait, t.portrait.alt, "(min-width: 900px) 36vw, 88vw", { cls: "portrait__img" } %}
+    <figcaption class="portrait__caption">{{ t.portrait.caption }}</figcaption>
+  </figure>
+  <blockquote class="portrait__quote">
+    <p>{{ t.portrait.quote }}</p>
+    <footer>— <em>{{ t.portrait.author }}</em></footer>
+  </blockquote>
+</section>
+
+<section class="section section--faq" id="faq">
+  <h2 class="section__title">{{ t.faq.titleHtml | safe }}</h2>
+  <div class="faq">
+    {%- for item in t.faq.items %}
+    <details class="faq__item" id="faq-{{ item.id }}">
+      <summary class="faq__q">{{ item.q }}</summary>
+      <div class="faq__a"><p>{{ item.a }}</p></div>
+    </details>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="cta">
+  <h2 class="cta__title">{{ t.cta.titleHtml | safe }}</h2>
+  <a class="btn" href="{{ site.telegram }}" target="_blank" rel="noopener">{{ t.cta.button }}</a>
+</section>

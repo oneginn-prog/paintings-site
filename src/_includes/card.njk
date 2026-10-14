@@ -1,0 +1,14 @@
+{#- Карточка картины: работа в светлом поле, как в паспарту. Ожидает w, t, lang. -#}
+{%- set img = images.works[w.slug].main -%}
+<li class="card">
+  <a class="card__link" href="{{ t.prefix }}/works/{{ w.slug }}/">
+    <div class="card__mat">
+      {% picture img, t.work.paintingAlt | fill({ title: w.title[lang], technique: w.technique[lang] | lower }), "(min-width: 1100px) 340px, (min-width: 700px) 30vw, 70vw", { cls: "card__img" } %}
+    </div>
+    <div class="card__meta">
+      <h3 class="card__title">{{ w.title[lang] }}</h3>
+      <p class="card__info">{{ w.size[lang] }}<br>{{ w.technique[lang] }}</p>
+      <p class="card__price">{{ w.price | price }}</p>
+    </div>
+  </a>
+</li>
