@@ -1,0 +1,12 @@
+---
+layout: base.njk
+lang: ru
+permalink: /
+headerOverlay: true
+preloadHero: true
+bodyClass: page-home
+eleventyComputed:
+  pageTitle: "{{ i18n.ru.siteTitle }}"
+  pageDescription: "{{ i18n.ru.siteDescription }}"
+---
+{% include "home.njk" %}

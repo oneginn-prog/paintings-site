@@ -1,0 +1,4 @@
+node_modules/
+_site/
+.cache/
+src/_data/images.json
