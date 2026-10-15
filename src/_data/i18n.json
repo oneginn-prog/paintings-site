@@ -8,7 +8,7 @@
     "siteDescription": "Оригинальные картины Вадима Гусева: каждая работа в единственном экземпляре. Посмотрите их в интерьере и примерьте на свою стену.",
     "nav": { "catalogue": "Каталог картин", "howToBuy": "Как заказать", "write": "Написать", "home": "Главная" },
     "hero": {
-      "titleHtml": "Привет, я <em>Вадим Гусев</em> — профессиональный актёр и режиссёр, а ещё художник. Непрофессиональный — пусть будет так, зато честно.",
+      "titleHtml": "Привет, я ВАДИМ ГУСЕВ — профессиональный актёр и режиссёр, а ещё <em>художник</em> (непрофессиональный — пусть будет так, зато честно)",
       "paragraphs": [
         "Мои картины — это не бизнес, а часть моей души. Создавая их, я полагаюсь прежде всего на собственное ощущение гармонии формы и на то, как действует цвет. Вы можете быть уверены: каждая картина существует в единственном экземпляре.",
         "Возможно, я ещё не нашёл свой стиль, но точно знаю: каждая работа сделана с большой любовью и несёт в себе частичку меня.",
@@ -22,7 +22,7 @@
       { "title": "Примерка в интерьере", "text": "Посмотрите, как картина будет выглядеть на стене." },
       { "title": "Встреча или доставка", "text": "В Москве лично, по России — доставка по договорённости." }
     ],
-    "works": { "titleHtml": "Работы в <em>наличии</em>" },
+    "works": { "titleHtml": "Работы <em>в наличии</em>" },
     "series": { "titleHtml": "Мини-<em>серии</em>", "subtitle": "Диптихи", "forPair": "за пару", "separately": "по отдельности — по {price}" },
     "portrait": {
       "caption": "Вадим Гусев — актёр, режиссёр, художник",
@@ -31,7 +31,7 @@
       "author": "Анри Матисс"
     },
     "faq": {
-      "titleHtml": "Вопросы и <em>ответы</em>",
+      "titleHtml": "Вопросы <em>и</em> ответы",
       "items": [
         { "id": "how-to-buy", "q": "Как приобрести картину?", "a": "Напишите мне в Telegram или на почту — расскажите, какая работа вам понравилась, и мы обсудим детали." },
         { "id": "see-in-person", "q": "Можно ли увидеть работу вживую до покупки?", "a": "Да. Если вы находитесь в Москве или готовы приехать, я с радостью покажу картину лично." },
@@ -110,7 +110,7 @@
     "siteDescription": "Original paintings by Vadim Gusev: every work exists in a single copy. See them in interiors and try them on your own wall.",
     "nav": { "catalogue": "Catalogue", "howToBuy": "How to buy", "write": "Contact", "home": "Home" },
     "hero": {
-      "titleHtml": "Hi, I'm <em>Vadim Gusev</em> — a professional actor and director, and also a painter. Not a professional one, to be honest — and I'd rather be honest.",
+      "titleHtml": "Hi, I'm VADIM GUSEV — a professional actor and director, and also a <em>painter</em> (not a professional one — so be it, but an honest one).",
       "paragraphs": [
         "My paintings aren't a business; they're a part of my soul. When I create them, I rely above all on my own sense of harmony in form and on the way colour works. You can be sure that every painting exists in a single copy.",
         "Maybe I haven't found my style yet, but I know for sure that each work is made with great love and carries a piece of me.",
@@ -124,8 +124,8 @@
       { "title": "Try it on your wall", "text": "See how the painting will look in your space." },
       { "title": "Meet in person or delivery", "text": "In person in Moscow, delivery across Russia by arrangement." }
     ],
-    "works": { "titleHtml": "Available <em>works</em>" },
-    "series": { "titleHtml": "Mini <em>series</em>", "subtitle": "Diptychs", "forPair": "for the pair", "separately": "separately — {price} each" },
+    "works": { "titleHtml": "<em>Available</em> works" },
+    "series": { "titleHtml": "Mini-<em>series</em>", "subtitle": "Diptychs", "forPair": "for the pair", "separately": "separately — {price} each" },
     "portrait": {
       "caption": "Vadim Gusev — actor, director, painter",
       "alt": "Portrait of Vadim Gusev",
@@ -133,7 +133,7 @@
       "author": "Henri Matisse"
     },
     "faq": {
-      "titleHtml": "Questions &amp; <em>answers</em>",
+      "titleHtml": "Questions <em>and</em> answers",
       "items": [
         { "id": "how-to-buy", "q": "How do I buy a painting?", "a": "Message me on Telegram or by email — tell me which work you liked, and we'll discuss the details." },
         { "id": "see-in-person", "q": "Can I see the work in person before buying?", "a": "Yes. If you're in Moscow or happy to come, I'll gladly show you the painting in person." },

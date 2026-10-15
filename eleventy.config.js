@@ -8,20 +8,12 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(HtmlBasePlugin);
   eleventyConfig.addPassthroughCopy({ ".cache/img": "img" });
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  for (const f of [
-    "cormorant-garamond-cyrillic-400-normal",
-    "cormorant-garamond-cyrillic-400-italic",
-    "cormorant-garamond-latin-400-normal",
-    "cormorant-garamond-latin-400-italic",
-    "manrope-cyrillic-300-normal",
-    "manrope-cyrillic-400-normal",
-    "manrope-cyrillic-500-normal",
-    "manrope-latin-300-normal",
-    "manrope-latin-400-normal",
-    "manrope-latin-500-normal",
-  ]) {
-    const pkg = f.startsWith("manrope") ? "manrope" : "cormorant-garamond";
-    eleventyConfig.addPassthroughCopy({ [`node_modules/@fontsource/${pkg}/files/${f}.woff2`]: `assets/fonts/${f}.woff2` });
+  // Шрифт Inter (вариативный): русская и латинская части, прямой и курсив.
+  for (const style of ["normal", "italic"]) {
+    for (const sub of ["cyrillic", "latin"]) {
+      const f = `inter-${sub}-wght-${style}.woff2`;
+      eleventyConfig.addPassthroughCopy({ [`node_modules/@fontsource-variable/inter/files/${f}`]: `assets/fonts/${f}` });
+    }
   }
   eleventyConfig.addWatchTarget("src/assets/");
 
