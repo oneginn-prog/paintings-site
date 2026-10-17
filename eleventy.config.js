@@ -8,11 +8,17 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(HtmlBasePlugin);
   eleventyConfig.addPassthroughCopy({ ".cache/img": "img" });
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  // Шрифт Inter (вариативный): русская и латинская части, прямой и курсив.
-  for (const style of ["normal", "italic"]) {
-    for (const sub of ["cyrillic", "latin"]) {
-      const f = `inter-${sub}-wght-${style}.woff2`;
-      eleventyConfig.addPassthroughCopy({ [`node_modules/@fontsource-variable/inter/files/${f}`]: `assets/fonts/${f}` });
+  // Шрифты: Cormorant Garamond (заголовки) и Manrope (текст), русская и латинская части.
+  const fonts = [
+    ["cormorant-garamond", ["400-normal", "400-italic", "700-italic"]],
+    ["manrope", ["300-normal", "400-normal", "500-normal"]],
+  ];
+  for (const [pkg, variants] of fonts) {
+    for (const v of variants) {
+      for (const sub of ["cyrillic", "latin"]) {
+        const f = `${pkg}-${sub}-${v}.woff2`;
+        eleventyConfig.addPassthroughCopy({ [`node_modules/@fontsource/${pkg}/files/${f}`]: `assets/fonts/${f}` });
+      }
     }
   }
   eleventyConfig.addWatchTarget("src/assets/");
@@ -46,7 +52,7 @@ export default function (eleventyConfig) {
     const fallbackW = img.widths.find((w) => w >= 800) ?? img.widths[img.widths.length - 1];
     const h = Math.round((img.height / img.width) * 1000);
     const esc = String(alt).replace(/"/g, "&quot;");
-    return `<picture${opts.pictureClass ? ` class="${opts.pictureClass}"` : ""}><source type="image/webp" srcset="${set("webp")}" sizes="${sizes}"><img src="${img.src}-${fallbackW}.jpg" srcset="${set("jpg")}" sizes="${sizes}" width="1000" height="${h}" alt="${esc}"${opts.cls ? ` class="${opts.cls}"` : ""} ${opts.eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
+    return `<picture${opts.pictureClass ? ` class="${opts.pictureClass}"` : ""}><source type="image/webp" srcset="${set("webp")}" sizes="${sizes}"><img src="${img.src}-${fallbackW}.jpg" srcset="${set("jpg")}" sizes="${sizes}" width="1000" height="${h}" alt="${esc}"${opts.cls ? ` class="${opts.cls}"` : ""} ${opts.eager ? 'fetchpriority="high"' : opts.plain ? "" : 'loading="lazy"'} decoding="async"></picture>`;
   });
   // Адрес с учётом подпапки сайта на GitHub Pages — для ссылок внутри JSON/скриптов,
   // которые Eleventy сам не исправляет.

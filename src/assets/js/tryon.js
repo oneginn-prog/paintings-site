@@ -11,8 +11,7 @@
     return;
   }
 
-  var items = JSON.parse(dlg.dataset.items);
-  var slug = dlg.dataset.slug;
+  var items, slug, paintingsReady;
   var stage = dlg.querySelector(".tryon__stage");
   var canvas = dlg.querySelector(".tryon__canvas");
   var ctx = canvas.getContext("2d");
@@ -43,14 +42,23 @@
   };
 
   // ----- картины -----
-  var paintingsReady = Promise.all(items.map(function (it) {
-    return new Promise(function (res) {
-      var im = new Image();
-      im.onload = function () { it.img = im; res(); };
-      im.onerror = function () { res(); };
-      im.src = it.src;
-    });
-  }));
+  // Читаем из data-атрибутов окна. На главной страницах картину выбирают в блоке «Примерка»:
+  // скрипт меняет атрибуты и посылает окну событие tryon:set — тогда данные читаются заново.
+  function loadItems() {
+    items = JSON.parse(dlg.dataset.items);
+    slug = dlg.dataset.slug;
+    paintingsReady = Promise.all(items.map(function (it) {
+      return new Promise(function (res) {
+        var im = new Image();
+        im.onload = function () { it.img = im; res(); };
+        im.onerror = function () { res(); };
+        im.src = it.src;
+      });
+    }));
+    return paintingsReady;
+  }
+  loadItems();
+  dlg.addEventListener("tryon:set", function () { loadItems().then(draw); });
 
   // ----- открыть / закрыть -----
   openBtn.addEventListener("click", function () { dlg.showModal(); fit(); });

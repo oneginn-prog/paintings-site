@@ -181,5 +181,7 @@
     }
   ],
   "hero": "backgrounds/фон_главный.jpg",
-  "portrait": "portrait.jpg"
+  "portrait": "portrait.jpg",
+  "portraitQuote": "portraits/portrait-closeup-white-shirt.jpg",
+  "portraitFull": "portraits/portrait-fullbody.jpg"
 }

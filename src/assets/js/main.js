@@ -107,6 +107,68 @@
     });
   }
 
+  // ----- Меню на телефоне: полоски поворачиваются на 90° по часовой, панель — продолжение шапки -----
+  var burger = document.querySelector(".burger");
+  var menu = document.getElementById("site-menu");
+  if (burger && menu) {
+    var setMenu = function (open) {
+      burger.setAttribute("aria-expanded", String(open));
+      burger.classList.toggle("is-open", open);
+      menu.classList.toggle("is-open", open);
+      menu.inert = !open;
+    };
+    var isOpen = function () { return burger.getAttribute("aria-expanded") === "true"; };
+    burger.addEventListener("click", function () { setMenu(!isOpen()); });
+    // пункт меню, нажатие вне панели, Escape, переход на широкий экран — закрывают меню
+    menu.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+    document.addEventListener("click", function (e) {
+      if (isOpen() && !e.target.closest(".menu") && !e.target.closest(".burger")) setMenu(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && isOpen()) { setMenu(false); burger.focus(); }
+    });
+    var wide = window.matchMedia("(min-width: 861px)");
+    var onWide = function () { if (wide.matches) setMenu(false); };
+    if (wide.addEventListener) wide.addEventListener("change", onWide); else wide.addListener(onWide);
+  }
+
+  // ----- Блок «Примерка»: выбор картины для окна примерки -----
+  var pick = document.querySelector("[data-pick]");
+  var tryonDlg = document.querySelector("dialog.tryon");
+  if (pick && tryonDlg) {
+    var radios = Array.prototype.slice.call(pick.querySelectorAll("[role=radio]"));
+    var pickTitle = pick.querySelector("[data-pick-title]");
+    var pickSize = pick.querySelector("[data-pick-size]");
+    var select = function (btn, focus) {
+      radios.forEach(function (r) {
+        r.setAttribute("aria-checked", String(r === btn));
+        r.tabIndex = r === btn ? 0 : -1;
+      });
+      if (focus) btn.focus();
+      pickTitle.textContent = btn.dataset.title;
+      pickSize.textContent = btn.dataset.size;
+      // данные для окна примерки: размеры и глубина рамы берутся из каталога
+      tryonDlg.dataset.items = JSON.stringify([{ src: btn.dataset.src, w: Number(btn.dataset.w), h: Number(btn.dataset.h), depth: Number(btn.dataset.depth) }]);
+      tryonDlg.dataset.slug = btn.dataset.slug;
+      tryonDlg.dataset.title = btn.dataset.title;
+      tryonDlg.dataset.message = btn.dataset.message;
+      var em = tryonDlg.querySelector(".tryon__title em");
+      if (em) em.textContent = btn.dataset.title;
+      tryonDlg.querySelectorAll("[data-copy]").forEach(function (a) { a.setAttribute("data-copy", btn.dataset.message); });
+      tryonDlg.dispatchEvent(new Event("tryon:set"));
+    };
+    radios.forEach(function (r, i) {
+      r.tabIndex = i === 0 ? 0 : -1;
+      r.addEventListener("click", function () { select(r, false); });
+      r.addEventListener("keydown", function (e) {
+        var d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (!d) return;
+        e.preventDefault();
+        select(radios[(i + d + radios.length) % radios.length], true);
+      });
+    });
+  }
+
   // ----- Карусель интерьеров (свайп работает сам, стрелки — для компьютера) -----
   document.querySelectorAll("[data-carousel]").forEach(function (c) {
     var track = c.querySelector(".carousel__track");

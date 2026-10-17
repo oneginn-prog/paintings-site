@@ -3,10 +3,17 @@
   <img class="hero__backdrop" src="{{ images.hero.src }}-800.webp" alt="" aria-hidden="true" fetchpriority="low">
   {% picture images.hero, t.hero.alt, "(min-width: 960px) 62vw, 100vw", { eager: true, pictureClass: "hero__photo", cls: "hero__img" } %}
   <div class="hero__panel">
-    <h1 class="hero__title">{{ t.hero.titleHtml | safe }}</h1>
+    <div class="hero__head">
+      {% picture images.portrait, t.portrait.alt, "(min-width: 960px) 200px, 120px", { plain: true, pictureClass: "hero__me", cls: "hero__me-img" } %}
+      <h1 class="hero__title">{{ t.hero.titleHtml | safe }}</h1>
+    </div>
     <div class="hero__text">
       {%- for p in t.hero.paragraphs %}
+      {%- if loop.first and p.startsWith(t.hero.lead) %}
+      <p><span class="hero__lead">{{ t.hero.lead }}</span>{{ p.slice(t.hero.lead.length) }}</p>
+      {%- else %}
       <p>{{ p }}</p>
+      {%- endif %}
       {%- endfor %}
     </div>
     <a class="btn" href="#faq-how-to-buy" data-open-faq>{{ t.hero.button }}</a>
@@ -20,6 +27,9 @@
       <span class="benefit__num">0{{ loop.index }}</span>
       <h2 class="benefit__title">{{ b.title }}</h2>
       <p class="benefit__text">{{ b.text }}</p>
+      {%- if b.link %}
+      <a class="benefit__link link link--accent" href="#tryon">{{ b.link }}</a>
+      {%- endif %}
     </li>
     {%- endfor %}
   </ul>
@@ -55,13 +65,56 @@
 
 <section class="portrait">
   <figure class="portrait__figure">
-    {% picture images.portrait, t.portrait.alt, "(min-width: 900px) 36vw, 88vw", { cls: "portrait__img" } %}
+    {% picture images.portraitQuote, t.portrait.alt, "(min-width: 900px) 36vw, 88vw", { cls: "portrait__img" } %}
     <figcaption class="portrait__caption">{{ t.portrait.caption }}</figcaption>
   </figure>
   <blockquote class="portrait__quote">
     <p>{{ t.portrait.quote }}</p>
     <footer>— {{ t.portrait.author }}</footer>
   </blockquote>
+</section>
+
+<section class="section section--tryon" id="tryon">
+  <h2 class="section__title">{{ t.tryonBlock.titleHtml | safe }}</h2>
+  <div class="tryon-block">
+    <ol class="steps">
+      {%- for step in t.tryonBlock.steps %}
+      <li class="steps__item"><span class="num" aria-hidden="true">{{ loop.index }}</span><p>{{ step }}</p></li>
+      {%- endfor %}
+    </ol>
+    <p class="tryon-block__privacy">{{ t.tryonBlock.privacy }}</p>
+
+    <div class="pick" role="radiogroup" aria-label="{{ t.tryonBlock.pickLabel }}" data-pick>
+      <div class="pick__row">
+        {%- for w in catalog.works %}
+        <button class="pick__item" type="button" role="radio" aria-checked="{{ 'true' if loop.first else 'false' }}"
+          title="{{ w.title[lang] }}" aria-label="{{ w.title[lang] }}"
+          data-slug="{{ w.slug }}" data-title="{{ w.title[lang] }}" data-size="{{ w.size[lang] }}"
+          data-src="{{ images.works[w.slug].main | mid | withBase }}" data-w="{{ w.width }}" data-h="{{ w.height }}" data-depth="{{ w.depth }}"
+          data-message="{{ t.work.messageTemplate | fill({ title: w.title[lang] }) }}">
+          {% picture images.works[w.slug].main, "", "88px", {} %}
+        </button>
+        {%- endfor %}
+      </div>
+      <p class="pick__current" aria-live="polite"><span data-pick-title>{{ catalog.works[0].title[lang] }}</span> · <span data-pick-size>{{ catalog.works[0].size[lang] }}</span></p>
+    </div>
+
+    <button class="btn" type="button" data-tryon>{{ t.tryonBlock.button }}</button>
+  </div>
+</section>
+
+<section class="section section--about" id="about">
+  <h2 class="section__title">{{ t.about.titleHtml | safe }}</h2>
+  <div class="about">
+    <figure class="about__figure">
+      {% picture images.portraitFull, t.about.alt, "(min-width: 900px) 34vw, 88vw", { cls: "about__img" } %}
+    </figure>
+    <div class="about__text">
+      {%- for p in t.about.paragraphs %}
+      <p>{{ p }}</p>
+      {%- endfor %}
+    </div>
+  </div>
 </section>
 
 <section class="section section--faq" id="faq">
@@ -76,7 +129,14 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="contacts">
   <h2 class="cta__title">{{ t.cta.titleHtml | safe }}</h2>
   <a class="btn" href="{{ site.telegram }}" target="_blank" rel="noopener">{{ t.cta.button }}</a>
 </section>
+
+{#- Окно примерки — то же, что на страницах картин; выбранную картину подставляет скрипт -#}
+{%- set item = catalog.works[0] -%}
+{%- set isDiptych = false -%}
+{%- set message = t.work.messageTemplate | fill({ title: item.title[lang] }) -%}
+{%- set tryonItems = [{ src: images.works[item.slug].main | mid | withBase, w: item.width, h: item.height, depth: item.depth }] -%}
+{% include "tryon.njk" %}
