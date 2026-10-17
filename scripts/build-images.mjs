@@ -141,6 +141,8 @@ for (const d of catalog.diptychs) {
 const heroSrc = resolve(catalog.hero);
 manifest.hero = await variants(heroSrc, "site", "hero", [800, 1200, 1600, 2048]);
 manifest.portrait = await variants(resolve(catalog.portrait), "site", "portrait", [600, 896]);
+manifest.portraitQuote = await variants(resolve(catalog.portraitQuote), "site", "portrait-quote", [600, 896]);
+manifest.portraitFull = await variants(resolve(catalog.portraitFull), "site", "portrait-full", [600, 896]);
 
 // Обложка главной для соцсетей: кадр с диваном и растениями.
 await og(path.join(OUT, "site", "og.jpg"), async (out) => {

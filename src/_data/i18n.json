@@ -6,9 +6,10 @@
     "name": "Вадим Гусев",
     "siteTitle": "Вадим Гусев — картины",
     "siteDescription": "Оригинальные картины Вадима Гусева: каждая работа в единственном экземпляре. Посмотрите их в интерьере и примерьте на свою стену.",
-    "nav": { "catalogue": "Каталог картин", "howToBuy": "Как заказать", "write": "Написать", "home": "Главная" },
+    "nav": { "catalogue": "Каталог картин", "about": "Обо мне", "tryOn": "Примерка на стену", "contacts": "Контакты", "howToBuy": "Как заказать", "write": "Написать", "home": "Главная", "menu": "Меню" },
     "hero": {
-      "titleHtml": "Привет, я ВАДИМ ГУСЕВ — профессиональный актёр и режиссёр, а ещё <em>художник</em> (непрофессиональный — пусть будет так, зато честно)",
+      "titleHtml": "Привет, я Вадим — профессиональный актёр и режиссёр, а ещё <em>художник</em>",
+      "lead": "Мои картины",
       "paragraphs": [
         "Мои картины — это не бизнес, а часть моей души. Создавая их, я полагаюсь прежде всего на собственное ощущение гармонии формы и на то, как действует цвет. Вы можете быть уверены: каждая картина существует в единственном экземпляре.",
         "Возможно, я ещё не нашёл свой стиль, но точно знаю: каждая работа сделана с большой любовью и несёт в себе частичку меня.",
@@ -19,7 +20,7 @@
     },
     "benefits": [
       { "title": "Только оригиналы", "text": "Каждая работа в одном экземпляре." },
-      { "title": "Примерка в интерьере", "text": "Посмотрите, как картина будет выглядеть на стене." },
+      { "title": "Примерка в интерьере", "text": "Посмотрите, как картина будет выглядеть на стене.", "link": "Попробовать →" },
       { "title": "Встреча или доставка", "text": "В Москве лично, по России — доставка по договорённости." }
     ],
     "works": { "titleHtml": "Работы <em>в наличии</em>" },
@@ -29,6 +30,34 @@
       "alt": "Портрет Вадима Гусева",
       "quote": "«Я мечтаю об искусстве равновесия, чистоты и спокойствия… подобном хорошему креслу, в котором отдыхаешь от усталости».",
       "author": "Анри Матисс"
+    },
+    "tryonBlock": {
+      "titleHtml": "Примерка на <em>свою стену</em>",
+      "steps": [
+        "Выберите картину из списка ниже.",
+        "В открывшемся окне загрузите фото своей стены или сделайте снимок (лучше снимать прямо, а не под углом).",
+        "Проведите линию по предмету, ширину которого вы знаете (диван, дверь), и введите её в сантиметрах: так картина встанет в реальном размере.",
+        "Перетащите картину на нужное место, подстройте размер и тень, сохраните картинку или напишите мне."
+      ],
+      "privacy": "Фото остаётся в вашем браузере и никуда не отправляется.",
+      "pickLabel": "Выберите картину",
+      "button": "Загрузить фото стены"
+    },
+    "about": {
+      "titleHtml": "Обо <em>мне</em>",
+      "alt": "Вадим Гусев в полный рост",
+      "paragraphs": [
+        "Привет!",
+        "Меня зовут Вадим Гусев, и если бы мне пришлось описать свою жизнь одним словом, я бы выбрал «странник».",
+        "Первые двенадцать лет я прожил в селе Липин Бор на Вологодчине: северное детство, летние дни у бабушки в деревне. А потом, в пятом классе, родители решили круто поменять жизнь, и мы уехали на Украину, тогда ещё советскую. Там прошли мои следующие двенадцать лет, юность и первое высшее образование. Потом я вернулся в Россию, и ещё двенадцать лет моим домом был Петербург. Теперь я живу в Москве и, кажется, давно перестал удивляться тому, что жизнь у меня отмеряется дюжинами лет.",
+        "Меня всегда тянуло к творчеству, к созиданию чего-то нового, необычного, живого. Но к себе я шёл окольными путями. Первое, экономическое, образование привело меня в рекламу: я успел поработать по обе стороны рекламного прилавка, и в банках, и в агентствах. Потом были годы фриланса в графическом дизайне. И всё это время во мне жило упрямое чувство, что главное ещё не случилось.",
+        "Театральная академия в Петербурге (ныне РГИСИ) сдалась мне с четвёртого раза. Пять лет учёбы на актёрско-режиссёрском факультете, и на выходе ясное понимание: в офис я больше не вернусь. Я служил в детском театре «На Неве», потом в маленьком и очень живом петербургском театре «Мимигранты». А затем пришло время нового витка, время открывать в себе новые возможности, и я переехал в Москву.",
+        "Годы в столице были прежде всего годами съёмок в кино и актёрских работ в театре. Но в последнее время меня потянуло вернуться к режиссуре, второй половине моей профессии, поэтому один из спектаклей в моей постановке вы можете посмотреть в Театре Демидова. Кино — отдельная большая глава моей жизни, и подробнее, чем я, о ней расскажет сам интернет: просто впишите моё имя и фамилию в поиск Яндекса или Google.",
+        "Новое время диктует новые формы творчества, поэтому сейчас я работаю с нейросетями, визуализацией и генерацией видео. Так что визуальный язык, выросший из дизайна, никуда из моей жизни не делся. Он просто нашёл новое воплощение.",
+        "С живописью у меня отношения особые. Долгое время я её вытеснял: казалось, это просто увлечение, и ничего более. Сейчас я понимаю, что эта часть моего созидательного потенциала должна реализоваться, и не только на холсте, но и публично. Деление творчеством с миром и есть часть самого творчества. Художник в глобальном смысле этого слова не будет таковым, если не делится тем, что создаёт.",
+        "Поэтому я рад приветствовать вас на моём скромном маленьком сайте. Спасибо, что зашли! Возможно, судьба привела вас сюда не просто так и это какой-нибудь знак. Но даже если это случайность, мне всё равно приятно.",
+        "Добро пожаловать! Буду счастлив, если одна из моих работ, как частичка моей души, окажется в вашем доме и будет радовать ваш глаз."
+      ]
     },
     "faq": {
       "titleHtml": "Вопросы <em>и</em> ответы",
@@ -108,9 +137,10 @@
     "name": "Vadim Gusev",
     "siteTitle": "Vadim Gusev — paintings",
     "siteDescription": "Original paintings by Vadim Gusev: every work exists in a single copy. See them in interiors and try them on your own wall.",
-    "nav": { "catalogue": "Catalogue", "howToBuy": "How to buy", "write": "Contact", "home": "Home" },
+    "nav": { "catalogue": "Catalogue", "about": "About me", "tryOn": "Try on a wall", "contacts": "Contact", "howToBuy": "How to buy", "write": "Contact", "home": "Home", "menu": "Menu" },
     "hero": {
-      "titleHtml": "Hi, I'm VADIM GUSEV — a professional actor and director, and also a <em>painter</em> (not a professional one — so be it, but an honest one).",
+      "titleHtml": "Hi, I'm Vadim — a professional actor and director, and also a <em>painter</em>",
+      "lead": "My paintings",
       "paragraphs": [
         "My paintings aren't a business; they're a part of my soul. When I create them, I rely above all on my own sense of harmony in form and on the way colour works. You can be sure that every painting exists in a single copy.",
         "Maybe I haven't found my style yet, but I know for sure that each work is made with great love and carries a piece of me.",
@@ -121,16 +151,44 @@
     },
     "benefits": [
       { "title": "Originals only", "text": "Every work exists in a single copy." },
-      { "title": "Try it on your wall", "text": "See how the painting will look in your space." },
+      { "title": "Try it on your wall", "text": "See how the painting will look in your space.", "link": "Try it →" },
       { "title": "Meet in person or delivery", "text": "In person in Moscow, delivery across Russia by arrangement." }
     ],
-    "works": { "titleHtml": "<em>Available</em> works" },
+    "works": { "titleHtml": "Available <em>works</em>" },
     "series": { "titleHtml": "Mini-<em>series</em>", "subtitle": "Diptychs", "forPair": "for the pair", "separately": "separately — {price} each" },
     "portrait": {
       "caption": "Vadim Gusev — actor, director, painter",
       "alt": "Portrait of Vadim Gusev",
       "quote": "“What I dream of is an art of balance, of purity and serenity… something like a good armchair which provides relaxation from physical fatigue.”",
       "author": "Henri Matisse"
+    },
+    "tryonBlock": {
+      "titleHtml": "Try it on <em>your wall</em>",
+      "steps": [
+        "Choose a painting from the list below.",
+        "In the window that opens, upload a photo of your wall or take one (straight on works better than at an angle).",
+        "Draw a line across an object whose width you know, such as a sofa or a door, and enter its width in centimetres, so the painting appears at true size.",
+        "Drag the painting into place, adjust the size and shadow, then save the image or write to me."
+      ],
+      "privacy": "Your photo stays in your browser and is never uploaded.",
+      "pickLabel": "Choose a painting",
+      "button": "Upload a wall photo"
+    },
+    "about": {
+      "titleHtml": "About <em>me</em>",
+      "alt": "Vadim Gusev, full length",
+      "paragraphs": [
+        "Hi!",
+        "My name is Vadim Gusev, and if I had to describe my life in a single word, I would choose \"wanderer\".",
+        "I spent my first twelve years in the village of Lipin Bor in the Vologda region: a northern childhood, summer days at my grandmother's in the countryside. Then, when I was in fifth grade, my parents decided to change their lives completely, and we moved to Ukraine, still Soviet back then. There I spent my next twelve years — my youth and my first university degree. After that I returned to Russia, and for another twelve years Saint Petersburg was my home. Now I live in Moscow, and it seems I stopped being surprised long ago that my life seems to come in twelve-year chapters.",
+        "I have always been drawn to creativity, to making something new, unusual, alive. But my road to myself was a winding one. My first degree, in economics, led me into advertising: I managed to work on both sides of the advertising counter, at banks and at agencies alike. Then came years of freelancing in graphic design. And all that time a stubborn feeling lived in me that the main thing had not happened yet.",
+        "The Saint Petersburg Theatre Academy (now the Russian State Institute of Performing Arts) gave in to me on the fourth attempt. Five years in the acting and directing department, and at the end of it a clear understanding: I would never go back to an office. I served at the children's theatre Na Neve (\"On the Neva\"), then at Mimigranty, a small and very lively Petersburg theatre. And then came the time for a new turn of the spiral, a time to discover new possibilities in myself, and I moved to Moscow.",
+        "My years in the capital have been, above all, years of film work and stage acting. But lately I have felt the pull to return to directing, the second half of my profession, and so one of the productions I have staged can be seen at the Demidov Theatre. Cinema is a separate, large chapter of my life, and the internet itself will tell you more about it than I can: just type my name into Yandex or Google.",
+        "New times call for new forms of creativity, so these days I also work with neural networks, visualization and video generation. The visual language that grew out of my design years has never left my life. It has simply found a new embodiment.",
+        "Painting holds a special place for me. For a long time I pushed it aside: it seemed like just a hobby, nothing more. Now I understand that this part of my creative potential has to be realized, and not only on canvas, but publicly. Sharing one's art with the world is itself part of the art. An artist, in the broadest sense of the word, is not truly an artist unless they share what they create.",
+        "That is why I am glad to welcome you to my modest little website. Thank you for stopping by! Perhaps fate brought you here for a reason and this is some kind of sign. But even if it is pure chance, I am still glad.",
+        "Welcome! I will be happy if one of my works, as a small piece of my soul, finds its way into your home and delights your eye."
+      ]
     },
     "faq": {
       "titleHtml": "Questions <em>and</em> answers",
