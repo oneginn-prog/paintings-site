@@ -129,11 +129,11 @@ body:not(.page-home) main { padding-top: calc(var(--hdr-top) + var(--hdr-h) + 20
 
 @media (max-width: 860px) {
   :root { --hdr-top: 10px; --hdr-h: 60px; }
-  .site-header { left: 10px; right: 10px; padding: 0 16px 0 18px; gap: 8px; border-radius: 28px; }
+  /* боковые колонки строго равные: имя всегда по центру экрана */
+  .site-header { left: 10px; right: 10px; padding: 0 17px; gap: 8px; border-radius: 28px; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
   .burger { display: inline-flex; justify-self: start; }
   .site-header__nav, .site-header__right .lang { display: none; }
   .site-header__name { font-size: 27px; }
-  .site-header__right .btn { min-height: 34px; padding: 0 16px; font-size: 12.5px; }
 
   .menu {
     display: flex; flex-direction: column;
@@ -148,6 +148,14 @@ body:not(.page-home) main { padding-top: calc(var(--hdr-top) + var(--hdr-h) + 20
   .menu > a:hover { color: var(--accent); }
   .menu__lang { padding-top: 18px; font-size: 14px; }
 }
+
+/* кнопка «Написать» в шапке на телефоне и планшете: примерно на 10% меньше, текст строго по центру */
+@media (max-width: 959px) {
+  .site-header__right .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 31px; padding: 0 14px; font-size: 11.9px; line-height: 1; letter-spacing: .02em; }
+}
+/* узкие экраны: имя чуть меньше, чтобы оставаться по центру и не наезжать на кнопку */
+@media (max-width: 380px) { .site-header__name { font-size: 25px; } }
+@media (max-width: 340px) { .site-header__name { font-size: 20px; } .site-header__right .btn { padding: 0 10px; } }
 
 /* ---------- Главный экран ---------- */
 .hero { position: relative; overflow: hidden; background: #e9e8e6; }
@@ -190,7 +198,8 @@ body:not(.page-home) main { padding-top: calc(var(--hdr-top) + var(--hdr-h) + 20
 @media (max-width: 959px) {
   .hero { background: var(--bg); padding-bottom: 8px; }
   .hero__backdrop { display: none; }
-  .hero__img { height: min(150vw, 84svh); object-position: 50% 62%; }
+  /* ниже прежнего: в кадре картина на стене, кресло и столик, плашка с портретом видна на первом экране */
+  .hero__img { height: min(115vw, 62svh); object-position: 50% 58%; }
   /* мобильная плашка: на 10% прозрачнее прежней (.82 → .72) */
   .hero__panel {
     margin: -56px 12px 0; padding: 24px 20px 28px;
