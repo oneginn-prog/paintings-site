@@ -35,9 +35,8 @@
       "titleHtml": "Примерка на <em>свою стену</em>",
       "steps": [
         "Выберите картину из списка ниже.",
-        "В открывшемся окне загрузите фото своей стены или сделайте снимок (лучше снимать прямо, а не под углом).",
-        "Проведите линию по предмету, ширину которого вы знаете (диван, дверь), и введите её в сантиметрах: так картина встанет в реальном размере.",
-        "Перетащите картину на нужное место, подстройте размер и тень, сохраните картинку или напишите мне."
+        "Загрузите фото своей стены или сделайте снимок (лучше снимать прямо, а не под углом).",
+        "Перетащите картину на нужное место, настройте свет, тень и размер. Сохраните картинку или нажмите «Приобрести картину»."
       ],
       "privacy": "Фото остаётся в вашем браузере и никуда не отправляется.",
       "pickLabel": "Выберите картину",
@@ -47,16 +46,16 @@
       "titleHtml": "Обо <em>мне</em>",
       "alt": "Вадим Гусев в полный рост",
       "paragraphs": [
-        "Привет!",
+        "<em>Привет!</em>",
         "Меня зовут Вадим Гусев, и если бы мне пришлось описать свою жизнь одним словом, я бы выбрал «странник».",
         "Первые двенадцать лет я прожил в селе Липин Бор на Вологодчине: северное детство, летние дни у бабушки в деревне. А потом, в пятом классе, родители решили круто поменять жизнь, и мы уехали на Украину, тогда ещё советскую. Там прошли мои следующие двенадцать лет, юность и первое высшее образование. Потом я вернулся в Россию, и ещё двенадцать лет моим домом был Петербург. Теперь я живу в Москве и, кажется, давно перестал удивляться тому, что жизнь у меня отмеряется дюжинами лет.",
-        "Меня всегда тянуло к творчеству, к созиданию чего-то нового, необычного, живого. Но к себе я шёл окольными путями. Первое, экономическое, образование привело меня в рекламу: я успел поработать по обе стороны рекламного прилавка, и в банках, и в агентствах. Потом были годы фриланса в графическом дизайне. И всё это время во мне жило упрямое чувство, что главное ещё не случилось.",
-        "Театральная академия в Петербурге (ныне РГИСИ) сдалась мне с четвёртого раза. Пять лет учёбы на актёрско-режиссёрском факультете, и на выходе ясное понимание: в офис я больше не вернусь. Я служил в детском театре «На Неве», потом в маленьком и очень живом петербургском театре «Мимигранты». А затем пришло время нового витка, время открывать в себе новые возможности, и я переехал в Москву.",
-        "Годы в столице были прежде всего годами съёмок в кино и актёрских работ в театре. Но в последнее время меня потянуло вернуться к режиссуре, второй половине моей профессии, поэтому один из спектаклей в моей постановке вы можете посмотреть в Театре Демидова. Кино — отдельная большая глава моей жизни, и подробнее, чем я, о ней расскажет сам интернет: просто впишите моё имя и фамилию в поиск Яндекса или Google.",
-        "Новое время диктует новые формы творчества, поэтому сейчас я работаю с нейросетями, визуализацией и генерацией видео. Так что визуальный язык, выросший из дизайна, никуда из моей жизни не делся. Он просто нашёл новое воплощение.",
-        "С живописью у меня отношения особые. Долгое время я её вытеснял: казалось, это просто увлечение, и ничего более. Сейчас я понимаю, что эта часть моего созидательного потенциала должна реализоваться, и не только на холсте, но и публично. Деление творчеством с миром и есть часть самого творчества. Художник в глобальном смысле этого слова не будет таковым, если не делится тем, что создаёт.",
-        "Поэтому я рад приветствовать вас на моём скромном маленьком сайте. Спасибо, что зашли! Возможно, судьба привела вас сюда не просто так и это какой-нибудь знак. Но даже если это случайность, мне всё равно приятно.",
-        "Добро пожаловать! Буду счастлив, если одна из моих работ, как частичка моей души, окажется в вашем доме и будет радовать ваш глаз."
+        "<span class=\"t-blue\">Меня всегда тянуло к творчеству</span>, к созиданию чего-то нового, необычного, живого. Но к себе я шёл окольными путями. Первое, экономическое, образование привело меня в рекламу: я успел поработать по обе стороны рекламного прилавка, и в банках, и в агентствах. Потом были годы фриланса в графическом дизайне. И всё это время во мне жило упрямое чувство, что главное ещё не случилось.",
+        "Театральная академия в Петербурге (ныне РГИСИ) сдалась мне <span class=\"t-blue\">с четвёртого раза.</span> Пять лет учёбы на актёрско-режиссёрском факультете, и на выходе ясное понимание: в офис я больше не вернусь. Я служил в детском театре «На Неве», потом в маленьком и очень живом петербургском театре «Мимигранты». А затем пришло время нового витка, время открывать в себе новые возможности, и я переехал в Москву.",
+        "Годы в столице были прежде всего годами съёмок в кино и актёрских работ в театре. Но в последнее время меня потянуло вернуться к режиссуре, второй половине моей профессии, поэтому один из спектаклей в моей постановке вы можете посмотреть в Театре Демидова. Кино — отдельная большая глава моей жизни, и подробнее, чем я, о ней расскажет <span class=\"t-blue\">сам интернет:</span> просто впишите моё имя и фамилию в поиск Яндекса или Google.",
+        "Новое время диктует новые формы творчества, поэтому сейчас я работаю <span class=\"t-blue\">с нейросетями:</span> визуализацией и генерацией видео. Так что визуальный язык, выросший из дизайна, никуда из моей жизни не делся. Он просто нашёл новое воплощение.",
+        "<strong>С живописью у меня отношения особые.</strong> Долгое время я её вытеснял: казалось, это просто увлечение, и ничего более. Сейчас я понимаю, что эта часть моего созидательного потенциала должна реализоваться, и не только на холсте, но и публично. Деление творчеством с миром и есть часть самого творчества. Художник в глобальном смысле этого слова не будет таковым, если не делится тем, что создаёт.",
+        "Поэтому я рад приветствовать вас на моём скромном маленьком сайте. Спасибо, что зашли! Возможно, судьба привела вас сюда <span class=\"t-blue\">не просто так</span> и это какой-нибудь знак. Но даже если это случайность, мне всё равно приятно.",
+        "<strong>Добро пожаловать!</strong> Буду счастлив, если одна из моих работ, как частичка моей души, окажется в вашем доме и будет радовать ваш глаз."
       ]
     },
     "faq": {
@@ -109,12 +108,6 @@
       "privacy": "Фото обрабатывается прямо в вашем браузере и никуда не отправляется.",
       "step1": "Сфотографируйте стену или загрузите готовое фото. Лучше снимать прямо, а не под углом.",
       "upload": "Выбрать или сделать фото",
-      "step2": "Проведите линию по предмету, ширину которого вы знаете (диван, дверь, комод), и введите его ширину.",
-      "hint": "Подсказка: потяните пальцем или мышкой от левого края предмета до правого. Ширину можно измерить рулеткой. Обычная дверь — около 80 см.",
-      "widthLabel": "Ширина предмета, см",
-      "apply": "Готово",
-      "skip": "Пропустить",
-      "redo": "Заново откалибровать",
       "step3": "Перетащите картину на нужное место. Двумя пальцами можно менять масштаб.",
       "light": "Свет",
       "lightLeft": "слева",
@@ -123,10 +116,8 @@
       "scale": "Размер",
       "gap": "Промежуток",
       "save": "Сохранить картинку",
-      "write": "Написать о картине",
-      "newPhoto": "Другое фото",
-      "noCalibration": "Масштаб примерный — откалибруйте, чтобы увидеть реальный размер.",
-      "calibrated": "Реальный масштаб по вашей калибровке."
+      "write": "Приобрести картину",
+      "newPhoto": "Другое фото"
     },
     "notFound": { "title": "Страница не найдена", "text": "Такой страницы нет. Вернитесь в каталог картин.", "button": "К каталогу" }
   },
@@ -166,9 +157,8 @@
       "titleHtml": "Try it on <em>your wall</em>",
       "steps": [
         "Choose a painting from the list below.",
-        "In the window that opens, upload a photo of your wall or take one (straight on works better than at an angle).",
-        "Draw a line across an object whose width you know, such as a sofa or a door, and enter its width in centimetres, so the painting appears at true size.",
-        "Drag the painting into place, adjust the size and shadow, then save the image or write to me."
+        "Upload a photo of your wall or take one (straight on works better than at an angle).",
+        "Drag the painting into place and adjust the light, shadow and size. Save the image or press \"Buy this painting\"."
       ],
       "privacy": "Your photo stays in your browser and is never uploaded.",
       "pickLabel": "Choose a painting",
@@ -178,16 +168,16 @@
       "titleHtml": "About <em>me</em>",
       "alt": "Vadim Gusev, full length",
       "paragraphs": [
-        "Hi!",
+        "<em>Hi!</em>",
         "My name is Vadim Gusev, and if I had to describe my life in a single word, I would choose \"wanderer\".",
         "I spent my first twelve years in the village of Lipin Bor in the Vologda region: a northern childhood, summer days at my grandmother's in the countryside. Then, when I was in fifth grade, my parents decided to change their lives completely, and we moved to Ukraine, still Soviet back then. There I spent my next twelve years — my youth and my first university degree. After that I returned to Russia, and for another twelve years Saint Petersburg was my home. Now I live in Moscow, and it seems I stopped being surprised long ago that my life seems to come in twelve-year chapters.",
-        "I have always been drawn to creativity, to making something new, unusual, alive. But my road to myself was a winding one. My first degree, in economics, led me into advertising: I managed to work on both sides of the advertising counter, at banks and at agencies alike. Then came years of freelancing in graphic design. And all that time a stubborn feeling lived in me that the main thing had not happened yet.",
-        "The Saint Petersburg Theatre Academy (now the Russian State Institute of Performing Arts) gave in to me on the fourth attempt. Five years in the acting and directing department, and at the end of it a clear understanding: I would never go back to an office. I served at the children's theatre Na Neve (\"On the Neva\"), then at Mimigranty, a small and very lively Petersburg theatre. And then came the time for a new turn of the spiral, a time to discover new possibilities in myself, and I moved to Moscow.",
-        "My years in the capital have been, above all, years of film work and stage acting. But lately I have felt the pull to return to directing, the second half of my profession, and so one of the productions I have staged can be seen at the Demidov Theatre. Cinema is a separate, large chapter of my life, and the internet itself will tell you more about it than I can: just type my name into Yandex or Google.",
-        "New times call for new forms of creativity, so these days I also work with neural networks, visualization and video generation. The visual language that grew out of my design years has never left my life. It has simply found a new embodiment.",
-        "Painting holds a special place for me. For a long time I pushed it aside: it seemed like just a hobby, nothing more. Now I understand that this part of my creative potential has to be realized, and not only on canvas, but publicly. Sharing one's art with the world is itself part of the art. An artist, in the broadest sense of the word, is not truly an artist unless they share what they create.",
-        "That is why I am glad to welcome you to my modest little website. Thank you for stopping by! Perhaps fate brought you here for a reason and this is some kind of sign. But even if it is pure chance, I am still glad.",
-        "Welcome! I will be happy if one of my works, as a small piece of my soul, finds its way into your home and delights your eye."
+        "<span class=\"t-blue\">I have always been drawn to creativity</span>, to making something new, unusual, alive. But my road to myself was a winding one. My first degree, in economics, led me into advertising: I managed to work on both sides of the advertising counter, at banks and at agencies alike. Then came years of freelancing in graphic design. And all that time a stubborn feeling lived in me that the main thing had not happened yet.",
+        "The Saint Petersburg Theatre Academy (now the Russian State Institute of Performing Arts) gave in to me <span class=\"t-blue\">on the fourth attempt.</span> Five years in the acting and directing department, and at the end of it a clear understanding: I would never go back to an office. I served at the children's theatre Na Neve (\"On the Neva\"), then at Mimigranty, a small and very lively Petersburg theatre. And then came the time for a new turn of the spiral, a time to discover new possibilities in myself, and I moved to Moscow.",
+        "My years in the capital have been, above all, years of film work and stage acting. But lately I have felt the pull to return to directing, the second half of my profession, and so one of the productions I have staged can be seen at the Demidov Theatre. Cinema is a separate, large chapter of my life, and <span class=\"t-blue\">the internet itself</span> will tell you more about it than I can: just type my name into Yandex or Google.",
+        "New times call for new forms of creativity, so these days I also work with <span class=\"t-blue\">neural networks:</span> visualization and video generation. The visual language that grew out of my design years has never left my life. It has simply found a new embodiment.",
+        "<strong>Painting holds a special place for me.</strong> For a long time I pushed it aside: it seemed like just a hobby, nothing more. Now I understand that this part of my creative potential has to be realized, and not only on canvas, but publicly. Sharing one's art with the world is itself part of the art. An artist, in the broadest sense of the word, is not truly an artist unless they share what they create.",
+        "That is why I am glad to welcome you to my modest little website. Thank you for stopping by! Perhaps fate brought you here <span class=\"t-blue\">for a reason</span> and this is some kind of sign. But even if it is pure chance, I am still glad.",
+        "<strong>Welcome!</strong> I will be happy if one of my works, as a small piece of my soul, finds its way into your home and delights your eye."
       ]
     },
     "faq": {
@@ -240,12 +230,6 @@
       "privacy": "Your photo is processed right in your browser and is never uploaded anywhere.",
       "step1": "Take a photo of your wall or upload one. It's best to shoot straight on, not at an angle.",
       "upload": "Choose or take a photo",
-      "step2": "Draw a line along an object whose width you know (a sofa, a door, a chest of drawers) and enter its width.",
-      "hint": "Tip: drag with your finger or mouse from the left edge of the object to the right edge. Measure it with a tape measure. A standard door is about 80 cm wide.",
-      "widthLabel": "Object width, cm",
-      "apply": "Done",
-      "skip": "Skip",
-      "redo": "Calibrate again",
       "step3": "Drag the painting where you want it. Pinch with two fingers to change the size.",
       "light": "Light",
       "lightLeft": "left",
@@ -254,10 +238,8 @@
       "scale": "Size",
       "gap": "Gap",
       "save": "Save image",
-      "write": "Ask about this painting",
-      "newPhoto": "Another photo",
-      "noCalibration": "The scale is approximate — calibrate to see the real size.",
-      "calibrated": "Real scale based on your calibration."
+      "write": "Buy this painting",
+      "newPhoto": "Another photo"
     },
     "notFound": { "title": "Page not found", "text": "This page doesn't exist. Go back to the catalogue.", "button": "To the catalogue" }
   }

@@ -11,7 +11,7 @@ export default function (eleventyConfig) {
   // Шрифты: Cormorant Garamond (заголовки) и Manrope (текст), русская и латинская части.
   const fonts = [
     ["cormorant-garamond", ["400-normal", "400-italic", "700-italic"]],
-    ["manrope", ["300-normal", "400-normal", "500-normal"]],
+    ["manrope", ["300-normal", "400-normal", "500-normal", "700-normal"]],
   ];
   for (const [pkg, variants] of fonts) {
     for (const v of variants) {

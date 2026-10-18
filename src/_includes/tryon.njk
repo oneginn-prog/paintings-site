@@ -24,22 +24,8 @@
         </label>
       </div>
 
-      <div class="tryon__step" data-step="calibrate" hidden>
-        <p>{{ t.tryon.step2 }}</p>
-        <p class="tryon__hint">{{ t.tryon.hint }}</p>
-        <label class="field">
-          <span>{{ t.tryon.widthLabel }}</span>
-          <input type="number" inputmode="decimal" min="10" max="2000" step="1" placeholder="200" data-width>
-        </label>
-        <div class="tryon__row">
-          <button class="btn" type="button" data-apply disabled>{{ t.tryon.apply }}</button>
-          <button class="btn btn--ghost" type="button" data-skip>{{ t.tryon.skip }}</button>
-        </div>
-      </div>
-
       <div class="tryon__step" data-step="place" hidden>
         <p>{{ t.tryon.step3 }}</p>
-        <p class="tryon__hint" data-scale-note data-approx="{{ t.tryon.noCalibration }}" data-real="{{ t.tryon.calibrated }}"></p>
         <div class="tryon__controls">
           <div class="field">
             <span>{{ t.tryon.light }}</span>
@@ -68,7 +54,6 @@
           <a class="btn btn--ghost" href="{{ site.telegram }}" target="_blank" rel="noopener" data-copy="{{ message }}">{{ t.tryon.write }}</a>
         </div>
         <div class="tryon__row tryon__row--small">
-          <button class="link" type="button" data-recalibrate>{{ t.tryon.redo }}</button>
           <label class="link">{{ t.tryon.newPhoto }}<input type="file" accept="image/*" hidden></label>
         </div>
       </div>
