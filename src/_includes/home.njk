@@ -111,7 +111,7 @@
     </figure>
     <div class="about__text">
       {%- for p in t.about.paragraphs %}
-      <p>{{ p }}</p>
+      <p>{{ p | safe }}</p>
       {%- endfor %}
     </div>
   </div>

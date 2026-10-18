@@ -1,6 +1,6 @@
 // «Примерить на свою стену». Всё происходит в браузере: фото никуда не отправляется.
-// Шаги: 1) фото стены, 2) калибровка масштаба по предмету известной ширины,
-// 3) картина в реальном размере с мягкой тенью — её можно двигать и сохранить.
+// Шаги: 1) фото стены, 2) картина с мягкой тенью — её можно двигать, подгонять размер и сохранить.
+// Масштаб по умолчанию: ширина фото считается равной примерно 3 м стены; дальше размер подгоняют вручную.
 (function () {
   "use strict";
 
@@ -17,22 +17,17 @@
   var ctx = canvas.getContext("2d");
   var steps = {};
   dlg.querySelectorAll("[data-step]").forEach(function (el) { steps[el.dataset.step] = el; });
-  var widthInput = dlg.querySelector("[data-width]");
-  var applyBtn = dlg.querySelector("[data-apply]");
-  var scaleNote = dlg.querySelector("[data-scale-note]");
   var softInput = dlg.querySelector("[data-softness]");
   var scaleInput = dlg.querySelector("[data-scale]");
   var gapInput = dlg.querySelector("[data-gap]");
 
   var MAX_SIDE = 2400; // фото уменьшаем до разумного размера
-  var APPROX_WALL_CM = 300; // без калибровки считаем, что на фото ~3 м стены
+  var APPROX_WALL_CM = 300; // ширина фото ≈ 3 м стены
 
   var st = {
     mode: "upload",
     photo: null, // canvas с фото стены
     pxPerCm: 0,
-    calibrated: false,
-    line: null, // {a:{x,y}, b:{x,y}} в пикселях фото
     cx: 0, cy: 0,
     manual: 1,
     gap: Number(dlg.dataset.gap) || 0,
@@ -67,10 +62,6 @@
   function setMode(m) {
     st.mode = m;
     Object.keys(steps).forEach(function (k) { steps[k].hidden = k !== m; });
-    canvas.classList.toggle("is-place", m === "place");
-    if (m === "place") {
-      scaleNote.textContent = st.calibrated ? scaleNote.dataset.real : scaleNote.dataset.approx;
-    }
     draw();
   }
 
@@ -90,17 +81,14 @@
         c.getContext("2d").drawImage(im, 0, 0, c.width, c.height);
         URL.revokeObjectURL(url);
         st.photo = c;
-        st.line = null;
-        st.calibrated = false;
         st.pxPerCm = c.width / APPROX_WALL_CM;
         st.manual = 1;
         scaleInput.value = 100;
         st.cx = c.width / 2;
         st.cy = c.height * 0.4;
-        applyBtn.disabled = true;
         dlg.classList.add("has-photo");
         stage.hidden = false;
-        requestAnimationFrame(function () { fit(); setMode("calibrate"); });
+        requestAnimationFrame(function () { fit(); setMode("place"); });
       };
       im.onerror = function () { URL.revokeObjectURL(url); };
       im.src = url;
@@ -186,26 +174,6 @@
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     render(ctx, s);
-    if (st.mode === "calibrate" && st.line) {
-      var a = st.line.a, b = st.line.b;
-      ctx.save();
-      ctx.lineWidth = 2 * st.dpr;
-      ctx.strokeStyle = "#002fa7";
-      ctx.shadowColor = "rgba(255,255,255,.9)";
-      ctx.shadowBlur = 4 * st.dpr;
-      ctx.beginPath();
-      ctx.moveTo(a.x * s, a.y * s);
-      ctx.lineTo(b.x * s, b.y * s);
-      ctx.stroke();
-      [a, b].forEach(function (p) {
-        ctx.beginPath();
-        ctx.fillStyle = "#fff";
-        ctx.arc(p.x * s, p.y * s, 7 * st.dpr, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-      });
-      ctx.restore();
-    }
   }
 
   // ----- касания и мышь -----
@@ -223,12 +191,7 @@
     canvas.setPointerCapture(e.pointerId);
     var p = toPhoto(e);
     pointers.set(e.pointerId, p);
-    if (st.mode === "calibrate") {
-      var grab = 22 / st.view;
-      if (st.line && dist(p, st.line.a) < grab) drag = { kind: "end", key: "a" };
-      else if (st.line && dist(p, st.line.b) < grab) drag = { kind: "end", key: "b" };
-      else { st.line = { a: p, b: { x: p.x, y: p.y } }; drag = { kind: "end", key: "b" }; }
-    } else if (st.mode === "place") {
+    if (st.mode === "place") {
       if (pointers.size === 2) {
         var pts = Array.from(pointers.values());
         drag = { kind: "pinch", d0: dist(pts[0], pts[1]), m0: st.manual, mid: mid(pts), cx: st.cx, cy: st.cy };
@@ -244,10 +207,7 @@
     if (!pointers.has(e.pointerId) || !drag) return;
     var p = toPhoto(e);
     pointers.set(e.pointerId, p);
-    if (drag.kind === "end") {
-      st.line[drag.key] = p;
-      applyBtn.disabled = !(dist(st.line.a, st.line.b) > 8 && Number(widthInput.value) > 0);
-    } else if (drag.kind === "move") {
+    if (drag.kind === "move") {
       st.cx = drag.cx + p.x - drag.p0.x;
       st.cy = drag.cy + p.y - drag.p0.y;
     } else if (drag.kind === "pinch" && pointers.size >= 2) {
@@ -280,30 +240,6 @@
     st.manual = Math.min(3, Math.max(0.2, v));
     scaleInput.value = Math.round(st.manual * 100);
   }
-
-  // ----- калибровка -----
-  widthInput.addEventListener("input", function () {
-    applyBtn.disabled = !(st.line && dist(st.line.a, st.line.b) > 8 && Number(widthInput.value) > 0);
-  });
-  applyBtn.addEventListener("click", function () {
-    var cm = Number(widthInput.value);
-    if (!st.line || !(cm > 0)) return;
-    st.pxPerCm = dist(st.line.a, st.line.b) / cm;
-    st.calibrated = true;
-    // картина — над серединой отмеченного предмета
-    st.cx = (st.line.a.x + st.line.b.x) / 2;
-    var maxH = Math.max.apply(null, items.map(function (it) { return it.h; })) * st.pxPerCm;
-    st.cy = Math.max(maxH / 2 + 10, Math.min(st.line.a.y, st.line.b.y) - maxH / 2 - 60 * st.pxPerCm);
-    setManual(1);
-    setMode("place");
-  });
-  dlg.querySelector("[data-skip]").addEventListener("click", function () {
-    st.calibrated = false;
-    st.pxPerCm = st.photo.width / APPROX_WALL_CM;
-    setManual(1);
-    setMode("place");
-  });
-  dlg.querySelector("[data-recalibrate]").addEventListener("click", function () { setMode("calibrate"); });
 
   // ----- настройки тени и размера -----
   dlg.querySelectorAll("[data-light]").forEach(function (b) {
