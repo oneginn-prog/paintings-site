@@ -1,0 +1,20 @@
+---
+# Старые адреса картин: переадресация на новые (картина «Трамп» переименована в «US-47»).
+pagination:
+  data: redirects
+  size: 1
+  alias: r
+redirects:
+  - { from: "/works/trump/", to: "/works/us-47/" }
+  - { from: "/en/works/trump/", to: "/en/works/us-47/" }
+permalink: "{{ r.from }}"
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html><head><meta charset="utf-8">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ r.to | withBase }}">
+<meta http-equiv="refresh" content="0; url={{ r.to | withBase }}">
+<title>US-47</title>
+<script>location.replace({{ (r.to | withBase) | json | safe }} + location.search + location.hash);</script>
+</head><body><a href="{{ r.to | withBase }}">US-47</a></body></html>
